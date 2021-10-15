@@ -23,6 +23,21 @@ public class ValidationRules {
 		}
 	}
 
+	// add public static method for validation all input
+	public static Employee validateAllInputs(int empId, Employee[] empData, String firstName, String lastName,
+			String email, String deptId, String joinDate, Double salary) throws EmpHandlingException, ParseException {
+		validateEmpId(empId, empData);
+		validateName(firstName, "First");
+		validateName(lastName, "Last");
+		validateEmail(email);
+		validateDept(deptId);
+		Date date = parseValidateJoinDate(joinDate);
+
+		// => all i/ps are valid -- encapsulate all these details in emp class instance,
+		// return it's ref to the caller
+		return new Employee(empId, firstName, lastName, email, deptId, date, empId);
+	}
+
 	// Add a static method to validate: email
 	// Rule: must contain "@" and must end with ".com"
 	public static String validateEmail(String email) throws EmpHandlingException {

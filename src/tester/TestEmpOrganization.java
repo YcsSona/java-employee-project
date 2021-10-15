@@ -36,10 +36,9 @@ public class TestEmpOrganization {
 						if (counter < employees.length) {
 							System.out.println(
 									"Enter employee: Id, Firstname, Lastname, Email, DeptId, Join Date(dd/MM/yyyy), Salary");
-							Employee employee = new Employee(validateEmpId(sc.nextInt(), employees),
-									validateName(sc.next(), "First"), validateName(sc.next(), "Last"),
-									validateEmail(sc.next()), validateDept(sc.next()), parseValidateJoinDate(sc.next()),
-									sc.nextDouble());
+
+							Employee employee = validateAllInputs(sc.nextInt(), employees, sc.next(), sc.next(), sc.next(), sc.next(),
+									sc.next(), sc.nextDouble());
 
 							employees[counter++] = employee;
 							System.out.println("Emp hired.");
