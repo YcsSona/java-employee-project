@@ -98,7 +98,7 @@ public class ValidationRules {
 	}
 
 	// fetch employee details by empId
-	public static Employee getEmployeeDetails(int empId, Employee[] empData) throws EmpHandlingException {
+	public static Employee getEmployeeDetailsById(int empId, Employee[] empData) throws EmpHandlingException {
 		Employee newEmp = new Employee(empId);
 
 		for (Employee e : empData) {

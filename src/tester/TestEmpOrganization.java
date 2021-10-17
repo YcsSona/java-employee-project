@@ -51,7 +51,7 @@ public class TestEmpOrganization {
 
 					case 2:
 						System.out.println("Enter employee Id to be searched.");
-						Employee e = getEmployeeDetails(sc.nextInt(), employees);
+						Employee e = getEmployeeDetailsById(sc.nextInt(), employees);
 
 						System.out.println("Enter deptId to be shifted.");
 						Department dept = validateDept(sc.next());
