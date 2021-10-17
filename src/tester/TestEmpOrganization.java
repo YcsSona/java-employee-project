@@ -37,8 +37,8 @@ public class TestEmpOrganization {
 							System.out.println(
 									"Enter employee: Id, Firstname, Lastname, Email, DeptId, Join Date(dd/MM/yyyy), Salary");
 
-							Employee employee = validateAllInputs(sc.nextInt(), employees, sc.next(), sc.next(), sc.next(), sc.next(),
-									sc.next(), sc.nextDouble());
+							Employee employee = validateAllInputs(sc.nextInt(), employees, sc.next(), sc.next(),
+									sc.next(), sc.next(), sc.next(), sc.nextDouble());
 
 							employees[counter++] = employee;
 							System.out.println("Emp hired.");
@@ -61,7 +61,7 @@ public class TestEmpOrganization {
 						break;
 					}
 				} catch (Exception e) {
-					System.out.println("Error: " + e);
+					System.out.println(e.getMessage());
 				}
 				// clear off all pending inputs from scanner buffer till next line
 				sc.nextLine();

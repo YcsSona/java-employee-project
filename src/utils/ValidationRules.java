@@ -1,13 +1,14 @@
 package utils;
 
 import java.text.ParseException;
+import java.util.Arrays;
 import java.util.Date;
 
 import com.app.core.Department;
 import com.app.core.Employee;
 import com.app.exceptions.EmpHandlingException;
 import static com.app.core.Employee.sdf;
-import static com.app.core.Department.valueOf;
+import static com.app.core.Department.*;
 
 public class ValidationRules {
 
@@ -58,8 +59,16 @@ public class ValidationRules {
 
 	// Validate: Dept name
 	// Rule: RnD, Finance, Marketing, HR
-	public static Department validateDept(String dept) {
-		return valueOf(dept.toUpperCase());
+	public static Department validateDept(String dept) throws EmpHandlingException {
+		try {
+			return valueOf(dept.toUpperCase());
+		} catch (IllegalArgumentException e) {
+			StringBuilder sb = new StringBuilder("Invalid Department\n");
+			sb.append("Valid departments ");
+			sb.append(Arrays.toString(values()));
+			// convert sb to string -- use toString()
+			throw new EmpHandlingException(sb.toString());
+		}
 	}
 
 	// Parsing and validation of Join date
