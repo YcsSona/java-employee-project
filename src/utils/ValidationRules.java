@@ -38,7 +38,7 @@ public class ValidationRules {
 
 		// => all i/ps are valid -- encapsulate all these details in emp class instance,
 		// return it's ref to the caller
-		return new Employee(empId, firstName, lastName, email, dept, date, empId);
+		return new Employee(empId, firstName, lastName, email, dept, date, salary);
 	}
 
 	// Add a static method to validate: email
