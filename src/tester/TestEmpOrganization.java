@@ -64,12 +64,7 @@ public class TestEmpOrganization {
 						break;
 
 					case 3:
-						for (Employee emp : employees) {
-							if (emp != null) {
-								System.out.println(emp.toString());
-							}
-						}
-
+						getEmployeeDetails(employees);
 						break;
 
 					default:

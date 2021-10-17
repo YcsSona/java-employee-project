@@ -110,4 +110,13 @@ public class ValidationRules {
 		}
 		throw new EmpHandlingException("No record found. Invalid employee ID.");
 	}
+
+	// fetch all details
+	public static void getEmployeeDetails(Employee[] emps) {
+		for (Employee emp : emps) {
+			if (emp != null) {
+				System.out.println(emp.toString());
+			}
+		}
+	}
 }
