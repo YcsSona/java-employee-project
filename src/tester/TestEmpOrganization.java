@@ -23,7 +23,8 @@ public class TestEmpOrganization {
 				System.out.println("1. Hire employee");
 				System.out.println("2. Update employee salary & dept(Promotion)");
 				System.out.println("3. Display employee details.");
-				System.out.println("4. Press 0 to exit.");
+				System.out.println("4. Link Aadhar card.");
+				System.out.println("5. Press 0 to exit.");
 				System.out.println("Enter your choice: ");
 
 				try {
@@ -33,8 +34,6 @@ public class TestEmpOrganization {
 						break;
 
 					case 1:
-
-						boolean found = false;
 						if (counter < employees.length) {
 							System.out.println(
 									"Enter employee: Id, Firstname, Lastname, Email, DeptId, Join Date(dd/MM/yyyy), Salary");
@@ -51,20 +50,28 @@ public class TestEmpOrganization {
 
 					case 2:
 						System.out.println("Enter employee Id to be searched.");
-						Employee e = getEmployeeDetailsById(sc.nextInt(), employees);
+						Employee empById = getEmployeeDetailsById(sc.nextInt(), employees);
 
 						System.out.println("Enter deptId to be shifted.");
 						Department dept = validateDept(sc.next());
-						e.setDeptId(dept);
+						empById.setDeptId(dept);
 
 						System.out.println("Enter salary to be incremented.");
-						double incrementedSalary = e.getSalary() + sc.nextDouble();
-						e.setSalary(incrementedSalary);
+						double incrementedSalary = empById.getSalary() + sc.nextDouble();
+						empById.setSalary(incrementedSalary);
 
 						break;
 
 					case 3:
 						getEmployeeDetails(employees);
+						break;
+
+					case 4:
+						System.out.println("Enter emp ID to link Aadhar card.");
+						empById = getEmployeeDetailsById(sc.nextInt(), employees);
+						System.out.println("Enter Aadhar card details: cardNumber, creationDate,location");
+						empById.linkAadharCard(sc.next(), sdf.parse(sc.next()), sc.next());
+						System.out.println("Aadhar card linked for employee!!!");
 						break;
 
 					default:
