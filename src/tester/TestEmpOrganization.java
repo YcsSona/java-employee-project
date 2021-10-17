@@ -2,6 +2,7 @@ package tester;
 
 import java.util.Scanner;
 
+import com.app.core.Department;
 import com.app.core.Employee;
 import com.app.exceptions.EmpHandlingException;
 import static utils.ValidationRules.*;
@@ -20,8 +21,9 @@ public class TestEmpOrganization {
 
 			while (!exit) {
 				System.out.println("1. Hire employee");
-				System.out.println("2. Display employee details.");
-				System.out.println("3. Press 0 to exit.");
+				System.out.println("2. Update employee salary & dept(Promotion)");
+				System.out.println("3. Display employee details.");
+				System.out.println("4. Press 0 to exit.");
 				System.out.println("Enter your choice: ");
 
 				try {
@@ -48,6 +50,20 @@ public class TestEmpOrganization {
 						break;
 
 					case 2:
+						System.out.println("Enter employee Id to be searched.");
+						Employee e = getEmployeeDetails(sc.nextInt(), employees);
+
+						System.out.println("Enter deptId to be shifted.");
+						Department dept = validateDept(sc.next());
+						e.setDeptId(dept);
+
+						System.out.println("Enter salary to be incremented.");
+						double incrementedSalary = e.getSalary() + sc.nextDouble();
+						e.setSalary(incrementedSalary);
+
+						break;
+
+					case 3:
 						for (Employee emp : employees) {
 							if (emp != null) {
 								System.out.println(emp.toString());

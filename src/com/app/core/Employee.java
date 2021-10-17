@@ -36,6 +36,18 @@ public class Employee {
 		this.empId = empId;
 	}
 
+	public void setDeptId(Department deptId) {
+		this.deptId = deptId;
+	}
+
+	public double getSalary() {
+		return salary;
+	}
+
+	public void setSalary(double salary) {
+		this.salary = salary;
+	}
+
 	@Override
 	public String toString() {
 		return "Employee: EmpId=" + empId + ", FirstName=" + firstName + ", LastName=" + lastName + ", Email=" + email

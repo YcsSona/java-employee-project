@@ -96,4 +96,18 @@ public class ValidationRules {
 		}
 		return empId;
 	}
+
+	// fetch employee details by empId
+	public static Employee getEmployeeDetails(int empId, Employee[] empData) throws EmpHandlingException {
+		Employee newEmp = new Employee(empId);
+
+		for (Employee e : empData) {
+			if (e != null) {
+				if (e.equals(newEmp)) {
+					return e;
+				}
+			}
+		}
+		throw new EmpHandlingException("No record found. Invalid employee ID.");
+	}
 }
