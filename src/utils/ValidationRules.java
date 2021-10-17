@@ -3,9 +3,11 @@ package utils;
 import java.text.ParseException;
 import java.util.Date;
 
+import com.app.core.Department;
 import com.app.core.Employee;
 import com.app.exceptions.EmpHandlingException;
 import static com.app.core.Employee.sdf;
+import static com.app.core.Department.valueOf;
 
 public class ValidationRules {
 
@@ -30,12 +32,12 @@ public class ValidationRules {
 		validateName(firstName, "First");
 		validateName(lastName, "Last");
 		validateEmail(email);
-		validateDept(deptId);
+		Department dept = validateDept(deptId);
 		Date date = parseValidateJoinDate(joinDate);
 
 		// => all i/ps are valid -- encapsulate all these details in emp class instance,
 		// return it's ref to the caller
-		return new Employee(empId, firstName, lastName, email, deptId, date, empId);
+		return new Employee(empId, firstName, lastName, email, dept, date, empId);
 	}
 
 	// Add a static method to validate: email
@@ -56,17 +58,8 @@ public class ValidationRules {
 
 	// Validate: Dept name
 	// Rule: RnD, Finance, Marketing, HR
-	public static String validateDept(String dept) throws EmpHandlingException {
-		switch (dept) {
-		case "Rnd":
-		case "Finance":
-		case "HR":
-		case "Marketing":
-			return dept;
-
-		default:
-			throw new EmpHandlingException("Invalid department.");
-		}
+	public static Department validateDept(String dept) {
+		return valueOf(dept.toUpperCase());
 	}
 
 	// Parsing and validation of Join date

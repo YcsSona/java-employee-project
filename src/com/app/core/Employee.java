@@ -9,7 +9,7 @@ public class Employee {
 	private String firstName;
 	private String lastName;
 	private String email;
-	private String deptId;
+	private Department deptId;
 	private Date joinDate;
 	private double salary;
 
@@ -21,7 +21,7 @@ public class Employee {
 		sdf = new SimpleDateFormat("dd/MM/yyyy");
 	}
 
-	public Employee(int empId, String firstName, String lastName, String email, String deptId, Date joinDate,
+	public Employee(int empId, String firstName, String lastName, String email, Department deptId, Date joinDate,
 			double salary) {
 		this.empId = empId;
 		this.firstName = firstName;
