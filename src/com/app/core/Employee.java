@@ -1,5 +1,7 @@
 package com.app.core;
 
+import static com.app.core.Employee.sdf;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -12,6 +14,9 @@ public class Employee {
 	private Department deptId;
 	private Date joinDate;
 	private double salary;
+
+	// add additional state: to establish HAS-A, Employee HAS-A Aadhar card
+	private AadharCard card;
 
 	// Add SDF for pasrsing(String --> Date) and format(Date --> String)
 	public static SimpleDateFormat sdf;
@@ -50,8 +55,12 @@ public class Employee {
 
 	@Override
 	public String toString() {
-		return "Employee: EmpId=" + empId + ", FirstName=" + firstName + ", LastName=" + lastName + ", Email=" + email
-				+ ", Dept=" + deptId + ", Join Date=" + sdf.format(joinDate) + ", Salary=" + salary;
+
+		String mesg = card == null ? "Aadhar card not yet linked." : card.toString();
+
+		return "Employee {EmpId=" + empId + ", FirstName=" + firstName + ", LastName=" + lastName + ", Email=" + email
+				+ ", Dept=" + deptId + ", Join Date=" + sdf.format(joinDate) + ", Salary=" + salary
+				+ "\n               " + mesg + "}\n";
 	}
 
 	@Override
@@ -62,4 +71,29 @@ public class Employee {
 		return false;
 	}
 
-}
+	// add a method to link aadhar card details to the current employee
+	public void linkAadharCard(String cardNumber, Date creationDate, String location) {
+		this.card = new AadharCard(cardNumber, creationDate, location);
+	}
+
+	// add inner class def : non-static nested class
+	public class AadharCard {
+		private String cardNumber;
+		private Date creationDate;
+		private String location;
+
+		public AadharCard(String cardNumber, Date creationDate, String location) {
+			super();
+			this.cardNumber = cardNumber;
+			this.creationDate = creationDate;
+			this.location = location;
+		}
+
+		@Override
+		public String toString() {
+			return ", AadharCard [cardNumber=" + cardNumber + ", creationDate=" + sdf.format(creationDate)
+					+ ", location=" + location + "]";
+		}
+	}// inner class over
+
+}// outer class over
